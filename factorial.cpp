@@ -1,26 +1,15 @@
-//Calculating factorial of a given number
+//Calculating factorial of a Entered number
 
 #include<iostream>
 using namespace std;
-
-int factorial(int n);
-
 int main()
 {
-    int n;
-
-    cout << "Enter a positive integer: ";
+    int n,i,fact=1;
     cin >> n;
-
-    cout << "Factorial of " << n << " = " << factorial(n);
-
-    return 0;
-}
-
-int factorial(int n)
-{
-    if(n > 1)
-        return n * factorial(n - 1);
-    else
-        return 1;
+    for(i=1;i<=n;i++)
+    {
+        fact*=i;
+    }
+    cout<<fact;
+    return 0;    
 }
