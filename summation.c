@@ -2,11 +2,13 @@
 #include<iostream>
 int main()
 {
-	int n,i,p=1;
-	scanf("%d",&n);
-	for(i=1;i<=n;i++)
+ 	int n, sum = 0, c, array[100];
+	scanf("%d", &n);
+	for (c = 0; c < n; c++)
 	{
-		p=p*i;
+		scanf("%d", &array[c]); 
+		sum = sum + array[c];
 	}
-	prinf("%d",p);
+	printf("Sum = %d\n", sum);
+	return 0;
 }
