@@ -1,12 +1,18 @@
-//finding factorial of given number
+//finding factorial of given number using recursion
+
 #include<stdio.h>
-int main()
-{
-	int n,i,p=1;
-	scanf("%d",&n);
-	for(i=1;i<=n;i++)
-	{
-		p=p*i;
-	}
-	printf("%d",p);
+long int multiplyNumbers(int n);
+int main() {
+    int n;
+    printf("Enter a positive integer: ");
+    scanf("%d",&n);
+    printf("Factorial of %d = %ld", n, multiplyNumbers(n));
+    return 0;
+}
+
+long int multiplyNumbers(int n) {
+    if (n>=1)
+        return n*multiplyNumbers(n-1);
+    else
+        return 1;
 }
