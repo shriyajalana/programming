@@ -1,27 +1,30 @@
+// GCD of Two Numbers
 #include <iostream>
 using namespace std;
 int main()
 {
-    long long int n;
-    cin >> n;
-    long long int a[10] = {0};
-    while (n != 0)
+    int n, m;
+    cin >> n >> m;
+    int gcd;
+    if (n > m)
     {
-        long long int k = n % 10;
-        a[k]++;
-        n = n / 10;
-    }
-    for (long long int i = 0; i < 10; i++)
-    {
-        if (a[i] == 0)
+        for (int i = 1; i < n / 2; i++)
         {
-            continue;
-        }
-        else
-        {
-            cout << i << " :" << a[i] << "\n";
+            if (n % i == 0 && m % i == 0)
+            {
+                gcd = i;
+            }
         }
     }
-    cout << endl;
-    return 0;
+    else
+    {
+        for (int i = 1; i < m / 2; i++)
+        {
+            if (n % i == 0 && m % i == 0)
+            {
+                gcd = i;
+            }
+        }
+    }
+    cout << "Gcd is: " << gcd << endl;
 }
