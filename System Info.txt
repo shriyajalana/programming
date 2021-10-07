@@ -1,6 +1,27 @@
-2016090027145
-HP 245 G5
-Serial Number: 5CG636046H
-Product Number: Y9Q66PC#ACJ
 
-INPUT: 19.5V=3.33A
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    int c[n];
+    int i,k=0;
+    for(i=1;i<=n;i++)
+    {
+        if(n%i==0)
+        {
+            c[k++]=i;
+        }
+    }
+    int j=k-1;
+    for(i=j;i>=0;i--)
+    {
+        if(c[i]<=10)
+        {
+            cout<<c[i]<<endl;
+            break;
+        }
+    }
+    return 0;
+}
