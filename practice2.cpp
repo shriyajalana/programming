@@ -1,37 +1,15 @@
-#include<iostream>
+// 2^3=8
+#include <iostream>
 using namespace std;
 int main()
 {
-	int i,n,d,t,j;
-	cin>>t;
-	while(t!=0)
-	{
-	cin>>n;
-	int a[n];
-	for(i=0;i<n;i++)
-	{
-		cin>>a[i];
-	}
-	for(i=0;i<n;i++)
-		{ 
-			int count=0,l=0;
-			l=i;
-	for(j=i;j<n;j++)
-		{
-		if(a[l]>=a[i+1])
-		{
-			count++;
-		}
-		else 
-			break;
-		}
-		if(count==(n-i))
-		{
-			cout<<a[i]<<" ";
-		}
-	}
-
-	t--;
+    int x, n;
+    long long int val = 1;
+    cin >> x >> n;
+    while (n-- > 0)
+    {
+        val = val * x;
+    }
+    cout << val << endl;
+    return 0;
 }
-}
-

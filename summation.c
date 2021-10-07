@@ -1,4 +1,3 @@
-// find the given number is prime or Not prime
 #include <iostream>
 using namespace std;
 int main()

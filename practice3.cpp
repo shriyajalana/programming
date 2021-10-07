@@ -1,37 +1,17 @@
-#include<iostream>
+// Count Digit
+#include <iostream>
 using namespace std;
+
 int main()
 {
-	int i,n,d,t,j;
-	cin>>t;
-	while(t!=0)
-	{
-	cin>>n;
-	int a[n];
-	for(i=0;i<n;i++)
-	{
-		cin>>a[i];
-	}
-	for(i=0;i<n;i++)
-		{ 
-			int count=0,l=0;
-			l=i;
-	for(j=i;j<n;j++)
-		{
-		if(a[l]>=a[i+1])
-		{
-			count++;
-		}
-		else 
-			break;
-		}
-		if(count==(n-i-1))
-		{
-			cout<<a[i]<<" ";
-		}
-	}
-
-	t--;
+    long long int n, count = 0, x;
+    cin >> n;
+    x = n;
+    while (n != 0)
+    {
+        n = n / 10;
+        count++;
+    }
+    cout << "digit in " << x << " is: " << count << endl;
+    return 0;
 }
-}
-
