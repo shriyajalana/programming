@@ -1,20 +1,15 @@
-#include<iostream>
-#include<vector>
+// 2^3=8
+#include <iostream>
 using namespace std;
-int main(){
-    int n,i,temp;
-    cin>>n;
-    vector<int> vect;
-    for(i=0;i<n;i++)
+int main()
+{
+    int x, n;
+    long long int val = 1;
+    cin >> x >> n;
+    while (n-- > 0)
     {
-        cin>>temp;
-        vect.push_back(temp);
+        val = val * x;
     }
-    //vect(begin(arr),end(arr));
-    cout<<endl;
-    for(i=0;i<vect.size();i++)
-    {
-        cout<<vect[i]<<" ";
-    }
+    cout << val << endl;
     return 0;
 }
