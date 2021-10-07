@@ -1,3 +1,4 @@
+
 //reverse a linked list using recurssion method
 #include<iostream>
 using namespace std;
@@ -40,16 +41,4 @@ void ReversePrint(Node* p){
     Node* q=p->next;
     q->next=p;
     p->next=NULL;
-}
-
-int main(){
-    head=NULL;
-    Insert(4);
-    Insert(7);
-    Insert(2);
-    Insert(8);
-    Insert(9);
-    ReversePrint(head);
-    Print();
-    return 0;
 }
