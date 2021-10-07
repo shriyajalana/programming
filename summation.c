@@ -1,14 +1,22 @@
-//finding factorial of given number
-#include<iostream>
+// find the given number is prime or Not prime
+#include <iostream>
+using namespace std;
 int main()
 {
- 	int n, sum = 0, c, array[100];
-	scanf("%d", &n);
-	for (c = 0; c < n; c++)
-	{
-		scanf("%d", &array[c]); 
-		sum = sum + array[c];
-	}
-	printf("Sum = %d\n", sum);
-	return 0;
+    int n, i, j;
+    cin >> n;
+    for (j = 2; j <= n; j++)
+    {
+        for (i = 2; i < j; i++)
+        {
+            if (j % i == 0)
+            {
+                break;
+            }
+        }
+        if (i == j)
+        {
+            cout << j << endl;
+        }
+    }
 }
