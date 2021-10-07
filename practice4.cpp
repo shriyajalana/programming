@@ -1,44 +1,89 @@
+// implementation of queue using array
 
-//reverse a linked list using recurssion method
 #include<iostream>
-using namespace std;
-struct Node{
-    int data;
-    Node* next;
-};
-Node* head;
-void Insert(int n){
-    Node* temp=new Node;
-    temp->data=n;
-    temp->next=NULL;
-    if(head==NULL){
-        head=temp;
-        return;
+int arr[33];
+int front=-1;
+int rear=-1;
+
+bool Isempty(){
+    if(front==-1 && rear==-1){
+        return true;
     }
     else{
-        Node* temp1=head;
-        while(temp1->next!=NULL){
-            temp1=temp1->next;
-        }
-        temp1->next=temp;
+        return false;
     }
-}
-void Print(){
-    Node* temp=head;
-    while(temp!=NULL){
-        cout<<temp->data<<"  ";
-        temp=temp->next;
-    }
-    cout<<endl;
 }
 
-void ReversePrint(Node* p){
-    if(p->next==NULL){
-        head=p;
+bool full(){
+    if(rear==32){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+void Enqueue(int x){
+    if(full()){
+        std::cout<<"queue is full\n";
         return;
     }
-    ReversePrint(p->next);
-    Node* q=p->next;
-    q->next=p;
-    p->next=NULL;
+    else if(Isempty()){
+    front=0;
+    rear=0;
+    arr[rear]=x;
+    }
+    else{
+        ++rear;
+        arr[rear]=x;
+    }
+    }
+void Dequeue(){
+    if(Isempty()){
+        std:: cout<<"deletion can't be performed\n";
+        return;
+    }
+    else if(front==rear){
+        front=-1;
+        rear=-1;
+    }
+    else{
+        std:: cout<<"dequeue element is "<<arr[front]<<std:: endl;
+        ++front;
+    }
+}
+void qprint(){
+    int i=front;
+    if(Isempty()){
+        std:: cout<<"queue is empty\n";
+    }
+    else{
+        while(i<=rear){
+            std:: cout<<arr[i]<<"   ";
+            i++;
+        }
+        std::cout<<std::endl;
+    }
+}
+
+void head(){
+    std::cout<<arr[front]<<std::endl;
+}
+
+
+int main(){
+    qprint();
+    Enqueue(3);   qprint();
+    Enqueue(5);   qprint();
+    Enqueue(7);   qprint();
+    Enqueue(9);   qprint();
+    Dequeue();    qprint();
+    Enqueue(12);  qprint();
+    Enqueue(50);  qprint();
+    full();
+    Dequeue();    qprint();
+    Enqueue(51);  qprint();
+    Dequeue();    qprint();
+    head();       Isempty();
+    return 0;
 }
