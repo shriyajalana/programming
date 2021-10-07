@@ -1,49 +1,93 @@
-// insert a node at the beginning of the list
-#include <iostream>
-using namespace std;
+// queue using LinkedList Enqueue-O(1)  from tail and Dequeue from head pointer
 
+#include <iostream>
 struct Node
 {
-    int data; //creating a node with two variable one is data and another one is pointer
+    int data;
     Node *next;
 };
 
-Node *Insert(Node *head, int x)
-{
-    Node *temp = new Node; //creating a node
-    temp->data = x;        //storing data in the node
-    temp->next = NULL;     //storing address in the node
+Node *front = NULL;
+Node *rear = NULL;
 
-    temp->next = head; // linking node with other node         phle jodo
-    head = temp;       // breaking a link and adding with the head   phir todo
-    return head;
+void Enqueue(int x)
+{
+    Node *temp = new Node;
+    temp->data = x;
+    temp->next = NULL;
+    if (front == NULL && rear == NULL)
+    {
+        front = rear = temp;
+        return;
+    }
+    rear->next = temp;
+    rear = temp;
 }
 
-void Print(Node *temp)
+void Dequeue()
 {
-    cout << "Here is the list: ";
-    while (temp->next != NULL)
+    Node *temp = front;
+    if (front == NULL && rear == NULL)
     {
-        temp = temp->next;
-        cout << temp->data << " -> ";
+        return;
     }
-    cout << endl;
-    cout << temp->data << "  ";
-    cout << "\n";
+    if (front == rear)
+    {
+        front = rear = NULL;
+    }
+    else
+    {
+        front = front->next;
+    }
+    free(temp);
+}
+
+bool IsEmpty()
+{
+    return (front == NULL && rear == NULL) ? true : false;
+}
+
+void Front()
+{
+    if (IsEmpty())
+    {
+        std::cout << "Queue is Empty:\n";
+    }
+    else
+    {
+        std::cout << front->data << std::endl;
+    }
+}
+
+void Print()
+{
+    Node *temp = front;
+    while (temp != NULL)
+    {
+        std::cout << temp->data << "  ";
+        temp = temp->next;
+    }
+    std::cout << std::endl;
 }
 
 int main()
 {
-    Node *head = NULL;
-    int i, n, x;
-    cout << "How many number?\n";
-    cin >> n;
-    for (i = 0; i < n; i++)
-    {
-        cout << "Enter Number\n";
-        cin >> x;
-        head = Insert(head, x);
-    }
-    Print(head);
+    Front();
+    IsEmpty();
+    Enqueue(2);
+    Print();
+    Front();
+    IsEmpty();
+    Enqueue(4);
+    Print();
+    Front();
+    IsEmpty();
+    Enqueue(6);
+    Print();
+    Dequeue();
+    Print();
+    Enqueue(8);
+    Print();
+    Front();
     return 0;
 }
