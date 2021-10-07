@@ -1,47 +1,15 @@
-//printing number in farward and backward direction using recursion method
-
-#include<iostream>
+// 2^3=8
+#include <iostream>
 using namespace std;
-struct Node{
-    int data;
-    Node* next;
-};
-
-Node* Insert(Node* head,int n){
-    Node* temp=new Node;
-    temp->data=n;
-    temp->next=NULL;
-    if(head==NULL){
-        head=temp;
-        return;
+int main()
+{
+    int x, n;
+    long long int val = 1;
+    cin >> x >> n;
+    while (n-- > 0)
+    {
+        val = val * x;
     }
-    else{
-        Node* temp1;
-        temp1=head;
-        while(temp1->next!=NULL){
-            temp1=temp1->next;
-        }
-        temp1->next=temp;
-    }
-    return head;
-}
-
-void Print(Node* head){
-    if(head==NULL){
-        cout<<"\n";
-        return;
-    }
-    cout<<head->data<<"  ";      // Number will print in the forward direction
-    Print(head->next);           //recursive call of Print function
-    cout<<head->data<<"  ";      //Number will print in the backward direction
-}
-
-int main(){
-    Node* head=NULL;
-    head=Insert(head,2);
-    head=Insert(head,5);
-    head=Insert(head,7);
-    head=Insert(head,4);
-    Print(head);
+    cout << val << endl;
     return 0;
 }
