@@ -1,14 +1,27 @@
-//finding factorial of given number
 #include <iostream>
 using namespace std;
 int main()
 {
-    int n, sum = 0;
-    cout << "Enter a positive integer: ";
+    long long int n;
     cin >> n;
-    for (int i = 1; i <= n; ++i) {
-        sum += i;
+    long long int a[10] = {0};
+    while (n != 0)
+    {
+        long long int k = n % 10;
+        a[k]++;
+        n = n / 10;
     }
-    cout << "Sum = " << sum;
+    for (long long int i = 0; i < 10; i++)
+    {
+        if (a[i] == 0)
+        {
+            continue;
+        }
+        else
+        {
+            cout << i << " :" << a[i] << "\n";
+        }
+    }
+    cout << endl;
     return 0;
 }

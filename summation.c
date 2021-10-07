@@ -1,15 +1,22 @@
-// 2^3=8
+
 #include <iostream>
 using namespace std;
 int main()
 {
-    int x, n;
-    long long int val = 1;
-    cin >> x >> n;
-    while (n-- > 0)
+    int n, i, j;
+    cin >> n;
+    for (j = 2; j <= n; j++)
     {
-        val = val * x;
+        for (i = 2; i < j; i++)
+        {
+            if (j % i == 0)
+            {
+                break;
+            }
+        }
+        if (i == j)
+        {
+            cout << j << endl;
+        }
     }
-    cout << val << endl;
-    return 0;
 }
