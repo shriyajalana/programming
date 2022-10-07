@@ -1,33 +1,59 @@
-// 1,2,3,6,4,5,7,6,9
-
-#include <iostream>
-#include <vector>
+//reverse the linkedlist by iteratively
+#include<iostream>
 using namespace std;
-int main()
-{
-    int n;
-    cin >> n;
-    int array[n];
-    for (int i = 0; i < n; i++)
-    {
-        cin >> array[i];
+struct Node{
+    int data;
+    Node* next;
+};
+Node* head;
+
+void Insert(int n){
+    Node* temp=new Node;
+    temp->data=n;
+    temp->next=NULL;
+    if(head==NULL){
+        head=temp;
+        return;
     }
-    vector<int> myVect;
-    int k;
-    cin >> k;
-    for (int i = 0; i < n; i++)
-    {
-        if (array[i] != k)
-        {
-            myVect.push_back(array[i]);
-        }
+    Node* temp1=head;
+    while(temp1->next!=NULL){
+        temp1=temp1->next;
     }
-    cout << "Vector is: ";
-    for (int j = 0; j < myVect.size(); j++)
-    {
-        cout << myVect[j] << ", ";
-    }
-    cout << endl;
+    temp1->next=temp;
 }
 
-// 1,2,3,4,5
+void Reverse(){
+    Node *current,*pre,*next;
+    pre=NULL;
+    current=head;
+    while(current!=NULL){
+        next=current->next;
+        current->next=pre;
+        pre=current;
+        current=next;
+    }
+    head=pre;
+}
+
+void Print(){
+    Node* temp=head;
+    while(temp!=NULL){
+        cout<<temp->data<<"  ";
+        temp=temp->next;
+    }
+    cout<<"\n";
+}
+
+int main(){
+    head=NULL;
+    Insert(3);
+    Insert(7);
+    Insert(22);
+    Insert(15);
+    cout<<"List before reverse is...";
+    Print();
+    Reverse();
+    cout<<"List after reverse is...";
+    Print();
+    return 0;
+}
