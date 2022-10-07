@@ -1,106 +1,47 @@
-#include <iostream>
+//printing number in farward and backward direction using recursion method
+
+#include<iostream>
 using namespace std;
+struct Node{
+    int data;
+    Node* next;
+};
 
-void lowerBound(int arr[], int n, int target)
-{
-    int low = 0;
-    int high = n - 1;
-    int mid;
-    int index = -1;
-    while (low <= high)
-    {
-        mid = (low + high) / 2;
-        if (arr[mid] == target)
-        {
-            index = mid;
-            break;
-        }
-        else if (arr[mid] < target)
-        {
-            low = mid + 1;
-        }
-        else
-        {
-            high = mid - 1;
-        }
+Node* Insert(Node* head,int n){
+    Node* temp=new Node;
+    temp->data=n;
+    temp->next=NULL;
+    if(head==NULL){
+        head=temp;
+        return;
     }
-    if (index == -1)
-    {
-        cout << "lowerBound is: " << low << endl;
+    else{
+        Node* temp1;
+        temp1=head;
+        while(temp1->next!=NULL){
+            temp1=temp1->next;
+        }
+        temp1->next=temp;
     }
-    else
-    {
-        cout << "element is present " << index << endl;
-    }
+    return head;
 }
 
-void UpperBound(int arr[], int n, int target)
-{
-    int low = 0;
-    int high = n;
-    int mid;
-    int index = -1;
-    while (low <= high)
-    {
-        mid = (low + high) / 2;
-        if (arr[mid] == target)
-        {
-            index = mid;
-            break;
-        }
-        else if (arr[mid] < target)
-        {
-            low = mid + 1;
-        }
-        else
-        {
-            high = mid - 1;
-        }
+void Print(Node* head){
+    if(head==NULL){
+        cout<<"\n";
+        return;
     }
-    if (index == -1)
-    {
-        cout << low << endl;
-    }
-    else
-    {
-        cout << index + 1 << endl;
-    }
+    cout<<head->data<<"  ";      // Number will print in the forward direction
+    Print(head->next);           //recursive call of Print function
+    cout<<head->data<<"  ";      //Number will print in the backward direction
 }
-int main()
-{
-    int arr[] = {4, 7, 13, 24, 45, 56, 67, 439};
-    int low = 0;
-    int n = 8;
-    int high = 7;
-    int mid;
-    int target = 5;
-    int result = -1;
-    lowerBound(arr, n, 48);  //lowerBound return if element is present otherwise next greater element
-    UpperBound(arr, n, 439); //lowerBound return if element is present otherwise next greater element
-    while (low <= high)
-    {
-        mid = (low + high) / 2;
-        if (arr[mid] == target)
-        {
-            result = mid;
-            break;
-        }
-        else if (arr[mid] < target)
-        {
-            low = mid + 1;
-        }
-        else
-        {
-            high = mid - 1;
-        }
-    }
-    if (result == -1)
-    {
-        cout << "not present\n";
-    }
-    else
-    {
-        cout << "Element present at index " << result << " and element is " << arr[result] << endl;
-    }
+
+int main(){
+    Node* head=NULL;
+    head=Insert(head,2);
+    head=Insert(head,5);
+    head=Insert(head,7);
+    head=Insert(head,4);
+    Print(head);
     return 0;
 }
