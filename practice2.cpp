@@ -1,32 +1,21 @@
-// fibonacci series up to given number
-#include <iostream>
+#include<iostream>
+#include<string>
 using namespace std;
-
+// bool checkPali(string s){
+//     int l=0;
+//     int h=s.size()-1;
+//     while(l<=h){
+//         if(s[l++]!=s[h--]){
+//             return false;
+//         }
+//     }
+//     return false;
+// }
 int main()
 {
-    int n;
-    cin >> n;
-    int fib[n];
-    fib[0] = 0;
-    fib[1] = 1;
-    for (int i = 2; i < n; i++)
-    {
-        fib[i] = fib[i - 1] + fib[i - 2];
-        cout << "fib: " << i << " is: " << fib[i] << endl;
-    }
+    string s;
+    cin>>s;
+    cout<<"Before: "<<s<<"After: ";
+    cout<<s.erase(s.begin() + 4);
     return 0;
 }
-
-// int fib(int n){
-//     if(n<2){
-//         return n;
-//     }
-//     return fib(n-1)+fib(n-2);
-// }
-
-// int main(){
-//     int n;
-//     cin>>n;
-//     cout<<fib(n)<<endl;
-//     return 0;
-// }
