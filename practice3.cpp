@@ -1,27 +1,65 @@
+// Inserting a new node at nth position of the list
+
 #include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
-int main()
+struct Node
 {
-    long long int n;
-    cin >> n;
-    long long int a[10] = {0};
-    while (n != 0)
+    int data;
+    Node *next;
+};
+Node *head;
+
+void Insert(int data, int n)
+{
+    Node *temp1 = new Node;
+    temp1->data = data;
+    temp1->next = NULL;
+    if (n == 1)
     {
-        long long int k = n % 10;
-        a[k]++;
-        n = n / 10;
+        temp1->next = head;
+        head = temp1;
+        return;
     }
-    for (long long int i = 0; i < 10; i++)
+    Node *temp2 = head;
+    for (int i = 0; i < n - 2; i++)
     {
-        if (a[i] == 0)
-        {
-            continue;
-        }
-        else
-        {
-            cout << i << " :" << a[i] << "\n";
-        }
+        temp2 = temp2->next;
+    }
+    temp1->next = temp2->next;
+    temp2->next = temp1;
+}
+
+void Print()
+{
+    Node *temp = head;
+    cout << "the list is...  ";
+    while (temp != NULL)
+    {
+        cout << temp->data << "  ";
+        temp = temp->next;
     }
     cout << endl;
+}
+
+int main()
+{
+    head = NULL;
+    int n, data, num;
+    int k = n;
+    cout << "how many number do you wanted to insert?\n";
+    cin >> num;
+    while (n > 0)
+    {
+        cout << "enter number\n";
+        cin >> data;
+        cout << "at which position\n";
+        cin >> n;
+        Insert(data, n);
+        n--;
+    }
+    Print();
+
     return 0;
 }
