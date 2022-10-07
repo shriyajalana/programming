@@ -1,65 +1,106 @@
-// Inserting a new node at nth position of the list
-
 #include <iostream>
-#include <vector>
-#include <algorithm>
 using namespace std;
-struct Node
-{
-    int data;
-    Node *next;
-};
-Node *head;
 
-void Insert(int data, int n)
+void lowerBound(int arr[], int n, int target)
 {
-    Node *temp1 = new Node;
-    temp1->data = data;
-    temp1->next = NULL;
-    if (n == 1)
+    int low = 0;
+    int high = n - 1;
+    int mid;
+    int index = -1;
+    while (low <= high)
     {
-        temp1->next = head;
-        head = temp1;
-        return;
+        mid = (low + high) / 2;
+        if (arr[mid] == target)
+        {
+            index = mid;
+            break;
+        }
+        else if (arr[mid] < target)
+        {
+            low = mid + 1;
+        }
+        else
+        {
+            high = mid - 1;
+        }
     }
-    Node *temp2 = head;
-    for (int i = 0; i < n - 2; i++)
+    if (index == -1)
     {
-        temp2 = temp2->next;
+        cout << "lowerBound is: " << low << endl;
     }
-    temp1->next = temp2->next;
-    temp2->next = temp1;
+    else
+    {
+        cout << "element is present " << index << endl;
+    }
 }
 
-void Print()
+void UpperBound(int arr[], int n, int target)
 {
-    Node *temp = head;
-    cout << "the list is...  ";
-    while (temp != NULL)
+    int low = 0;
+    int high = n;
+    int mid;
+    int index = -1;
+    while (low <= high)
     {
-        cout << temp->data << "  ";
-        temp = temp->next;
+        mid = (low + high) / 2;
+        if (arr[mid] == target)
+        {
+            index = mid;
+            break;
+        }
+        else if (arr[mid] < target)
+        {
+            low = mid + 1;
+        }
+        else
+        {
+            high = mid - 1;
+        }
     }
-    cout << endl;
+    if (index == -1)
+    {
+        cout << low << endl;
+    }
+    else
+    {
+        cout << index + 1 << endl;
+    }
 }
-
 int main()
 {
-    head = NULL;
-    int n, data, num;
-    int k = n;
-    cout << "how many number do you wanted to insert?\n";
-    cin >> num;
-    while (n > 0)
+    int arr[] = {4, 7, 13, 24, 45, 56, 67, 439};
+    int low = 0;
+    int n = 8;
+    int high = 7;
+    int mid;
+    int target = 5;
+    int result = -1;
+    lowerBound(arr, n, 48);  //lowerBound return if element is present otherwise next greater element
+    UpperBound(arr, n, 439); //lowerBound return if element is present otherwise next greater element
+    while (low <= high)
     {
-        cout << "enter number\n";
-        cin >> data;
-        cout << "at which position\n";
-        cin >> n;
-        Insert(data, n);
-        n--;
+        mid = (low + high) / 2;
+        if (arr[mid] == target)
+        {
+            result = mid;
+            break;
+        }
+        else if (arr[mid] < target)
+        {
+            low = mid + 1;
+        }
+        else
+        {
+            high = mid - 1;
+        }
     }
-    Print();
-
+    if (result == -1)
+    {
+        cout << "not present\n";
+    }
+    else
+    {
+        cout << "Element present at index " << result << " and element is " << arr[result] << endl;
+    }
     return 0;
 }
