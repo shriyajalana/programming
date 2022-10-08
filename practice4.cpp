@@ -1,55 +1,25 @@
-//reverse a linked list using recurssion method
-#include<iostream>
+#include <iostream>
 using namespace std;
-struct Node{
-    int data;
-    Node* next;
-};
-Node* head;
-void Insert(int n){
-    Node* temp=new Node;
-    temp->data=n;
-    temp->next=NULL;
-    if(head==NULL){
-        head=temp;
-        return;
+void Double(int *A, int size)            //  *A == A[]
+{
+    int i;
+    for (i = 0; i < size; i++)
+    {
+        A[i] = A[i]*2;                   // *(A+i) == A[i]
     }
-    else{
-        Node* temp1=head;
-        while(temp1->next!=NULL){
-            temp1=temp1->next;
-        }
-        temp1->next=temp;
-    }
-}
-void Print(){
-    Node* temp=head;
-    while(temp!=NULL){
-        cout<<temp->data<<"  ";
-        temp=temp->next;
-    }
-    cout<<endl;
 }
 
-void ReversePrint(Node* p){
-    if(p->next==NULL){
-        head=p;
-        return;
+int main()
+{
+    int A[] = {1, 2, 3, 4, 5};
+    int size = sizeof(A);    // sizeof(A[0]); //sizeof(A)=5*4->20; sizeof(A[0])=4; therefore the size is 20/4=5
+    cout<<"size: "<<size<<endl;
+    Double(A, size);         // A=&A[0]  This will pass the address of the first element
+    int i;
+    for (i = 0; i < size; i++)
+    {
+        cout << A[i] << "   ";
     }
-    ReversePrint(p->next);
-    Node* q=p->next;
-    q->next=p;
-    p->next=NULL;
-}
-
-int main(){
-    head=NULL;
-    Insert(4);
-    Insert(7);
-    Insert(2);
-    Insert(8);
-    Insert(9);
-    ReversePrint(head);
-    Print();
+    cout << endl;
     return 0;
 }
