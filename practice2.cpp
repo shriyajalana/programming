@@ -1,59 +1,25 @@
-//reverse the linkedlist by iteratively
-#include<iostream>
+#include <iostream>
 using namespace std;
-struct Node{
-    int data;
-    Node* next;
-};
-Node* head;
-
-void Insert(int n){
-    Node* temp=new Node;
-    temp->data=n;
-    temp->next=NULL;
-    if(head==NULL){
-        head=temp;
-        return;
+void Double(int *A, int size)            //  *A == A[]
+{
+    int i;
+    for (i = 0; i < size; i++)
+    {
+        A[i] = A[i]*2;                   // *(A+i) == A[i]
     }
-    Node* temp1=head;
-    while(temp1->next!=NULL){
-        temp1=temp1->next;
-    }
-    temp1->next=temp;
 }
 
-void Reverse(){
-    Node *current,*pre,*next;
-    pre=NULL;
-    current=head;
-    while(current!=NULL){
-        next=current->next;
-        current->next=pre;
-        pre=current;
-        current=next;
+int main()
+{
+    int A[] = {1, 2, 3, 4, 5};
+    int size = sizeof(A);    // sizeof(A[0]); //sizeof(A)=5*4->20; sizeof(A[0])=4; therefore the size is 20/4=5
+    cout<<"size: "<<size<<endl;
+    Double(A, size);         // A=&A[0]  This will pass the address of the first element
+    int i;
+    for (i = 0; i < size; i++)
+    {
+        cout << A[i] << "   ";
     }
-    head=pre;
-}
-
-void Print(){
-    Node* temp=head;
-    while(temp!=NULL){
-        cout<<temp->data<<"  ";
-        temp=temp->next;
-    }
-    cout<<"\n";
-}
-
-int main(){
-    head=NULL;
-    Insert(3);
-    Insert(7);
-    Insert(22);
-    Insert(15);
-    cout<<"List before reverse is...";
-    Print();
-    Reverse();
-    cout<<"List after reverse is...";
-    Print();
+    cout << endl;
     return 0;
 }
