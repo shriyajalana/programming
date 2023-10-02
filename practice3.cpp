@@ -1,37 +1,25 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
+void Double(int *A, int size)            //  *A == A[]
+{
+    int i;
+    for (i = 0; i < size; i++)
+    {
+        A[i] = A[i]*2;                   // *(A+i) == A[i]
+    }
+}
+
 int main()
 {
-	int i,n,d,t,j;
-	cin>>t;
-	while(t!=0)
-	{
-	cin>>n;
-	int a[n];
-	for(i=0;i<n;i++)
-	{
-		cin>>a[i];
-	}
-	for(i=0;i<n;i++)
-		{ 
-			int count=0,l=0;
-			l=i;
-	for(j=i;j<n;j++)
-		{
-		if(a[l]>=a[i+1])
-		{
-			count++;
-		}
-		else 
-			break;
-		}
-		if(count==(n-i-1))
-		{
-			cout<<a[i]<<" ";
-		}
-	}
-
-	t--;
+    int A[] = {1, 2, 3, 4, 5};
+    int size = sizeof(A);    // sizeof(A[0]); //sizeof(A)=5*4->20; sizeof(A[0])=4; therefore the size is 20/4=5
+    cout<<"size: "<<size<<endl;
+    Double(A, size);         // A=&A[0]  This will pass the address of the first element
+    int i;
+    for (i = 0; i < size; i++)
+    {
+        cout << A[i] << "   ";
+    }
+    cout << endl;
+    return 0;
 }
-}
-

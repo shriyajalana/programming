@@ -1,26 +1,20 @@
-//Calculating factorial of a Entered number using recursion
-
 #include<iostream>
 using namespace std;
-
-int factorial(int n);
-
-int main()
-{
-    int n;
-
-    cout << "Enter a positive integer: ";
-    cin >> n;
-
-    cout << "Factorial of " << n << " = " << factorial(n);
-
+int main(){
+    int n,m;
+    cin>>n>>m;
+    int a[n][m];
+    int i,j;
+    for(i=0;i<n;i++){
+        for(j=0;j<m;j++){
+            cin>>a[i][j];
+        }
+    }
+    for(j=0;j<m;j++){
+        for(i=0;i<n;i++){
+            cout<<a[i][j]<<" ";
+        }
+        cout<<"\n";
+    }
     return 0;
-}
-
-int factorial(int n)
-{
-    if(n > 1)
-        return n * factorial(n - 1);
-    else
-        return 1;
 }

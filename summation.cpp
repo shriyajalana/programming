@@ -1,14 +1,13 @@
-//finding factorial of given number
 #include <iostream>
+#include <string>
 using namespace std;
 int main()
 {
-    int n, sum = 0;
-    cout << "Enter a positive integer: ";
+    int n;
     cin >> n;
-    for (int i = 1; i <= n; ++i) {
-        sum += i;
-    }
-    cout << "Sum = " << sum;
+    string str;
+    str = to_string(n);
+    int k = str.length();
+    cout << str[0] << "   " << str << "   " << k << endl;
     return 0;
 }

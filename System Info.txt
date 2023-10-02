@@ -1,15 +1,33 @@
-2016090027145
-HP 245 G5
-Serial Number: 5CG636046H
-Product Number: Y9Q66PC#ACJ
+import React, { Component } from 'react';
+import './Offline.css';
 
-Contains Raltek Radio Model: RTL8188EE
-IC: 6317A-RTL8188EE       CNC: C-10909
-Contains FCC ID: TX2-RTL8188EE
-SCT: RCPRERT12-0647
+class Offline extends Component {
+	offlineListen = () =>{
+		var offNotif = document.getElementsByClassName('offline')[0];
+		var closeNotif = document.getElementsByClassName('close-notif')[0];
+		window.addEventListener('offline', function(e) { 
+			offNotif.classList.add('show-notif');
+		});
 
-Made In China
-RMN: TPN-1120
-BATT: HSTNN-PB6V
+		window.addEventListener('online', function(e) { 
+			offNotif.classList.remove('show-notif');
+		});
 
-INPUT: 19.5V=3.33A
+		closeNotif.addEventListener("click", function(){
+		    offNotif.classList.remove('show-notif');
+		});
+	}
+	componentDidMount(){
+		this.offlineListen();
+	}
+	render() {
+		return(
+		  	<div className="offline">
+		  		<span className="fas fa-exclamation-circle"></span>
+				<span>&nbsp; You are offline! Services like login and registration would be unavailable</span>
+				<span className="close-notif fas fa-times"></span>
+			</div>
+		);
+	}
+}
+export default Offline;
