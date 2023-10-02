@@ -1,33 +1,25 @@
-// 1,2,3,6,4,5,7,6,9
-
 #include <iostream>
-#include <vector>
 using namespace std;
-int main()
+void Double(int *A, int size)            //  *A == A[]
 {
-    int n;
-    cin >> n;
-    int array[n];
-    for (int i = 0; i < n; i++)
+    int i;
+    for (i = 0; i < size; i++)
     {
-        cin >> array[i];
+        A[i] = A[i]*2;                   // *(A+i) == A[i]
     }
-    vector<int> myVect;
-    int k;
-    cin >> k;
-    for (int i = 0; i < n; i++)
-    {
-        if (array[i] != k)
-        {
-            myVect.push_back(array[i]);
-        }
-    }
-    cout << "Vector is: ";
-    for (int j = 0; j < myVect.size(); j++)
-    {
-        cout << myVect[j] << ", ";
-    }
-    cout << endl;
 }
 
-// 1,2,3,4,5
+int main()
+{
+    int A[] = {1, 2, 3, 4, 5};
+    int size = sizeof(A);    // sizeof(A[0]); //sizeof(A)=5*4->20; sizeof(A[0])=4; therefore the size is 20/4=5
+    cout<<"size: "<<size<<endl;
+    Double(A, size);         // A=&A[0]  This will pass the address of the first element
+    int i;
+    for (i = 0; i < size; i++)
+    {
+        cout << A[i] << "   ";
+    }
+    cout << endl;
+    return 0;
+}
